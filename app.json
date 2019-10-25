@@ -1,0 +1,23 @@
+{
+  "name": "Cinema Booking API",
+  "description": "Cinema Booking API",
+  "repository": "https://github.com/alejandrobabio/cinema_booking",
+  "keywords": [],
+  "env": {
+    "RACK_ENV": "production",
+    "LANG": "en_US.UTF-8",
+    "SESSION_SECRET": {
+      "description": "The secret key",
+      "generator": "secret"
+    }
+  },
+  "addons": ["heroku-postgresql:hobby-dev"],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  "scripts": {
+    "postdeploy": "bundle exec rake prod_up"
+  }
+}

@@ -1,4 +1,8 @@
-### Database Setup
+# Cinema Booking API
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+### Development and Test Database Setup
 
 Create test and development databases, `user` should be consistent with your `config/database.yml`
 
