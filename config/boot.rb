@@ -4,3 +4,5 @@ require 'rubygems'
 require 'bundler/setup'
 
 Bundler.require :default, ENV['RACK_ENV']
+
+require 'cinema_booking'

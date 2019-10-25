@@ -2,4 +2,4 @@
 
 require File.expand_path('config/environment', __dir__)
 
-run CinemaBookingAPI::Base
+run CinemaBooking::API

@@ -7,4 +7,4 @@ $LOAD_PATH.unshift(File.expand_path('../app', __dir__))
 
 require 'boot'
 
-require 'base'
+require 'api'

@@ -3,13 +3,13 @@
 require 'movies'
 require 'bookings'
 
-module CinemaBookingAPI
-  class Base < Grape::API
+module CinemaBooking
+  class API < Grape::API
     format :json
 
     helpers do
       def logger
-        Logger.new "log/#{ENV['RACK_ENV']}.log"
+        CinemaBooking::Logger
       end
     end
 

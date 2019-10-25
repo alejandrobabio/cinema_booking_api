@@ -18,7 +18,7 @@ end
 
 desc 'API Routes'
 task routes: :environment do
-  CinemaBookingAPI::Base.routes.each do |api|
+  CinemaBooking::API.routes.each do |api|
     method = api.request_method.ljust(10)
     path   = api.path
     puts "     #{method} #{path}"

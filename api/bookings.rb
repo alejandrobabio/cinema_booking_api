@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module CinemaBookingAPI
+module CinemaBooking
   class Bookings < Grape::API
   end
 end
