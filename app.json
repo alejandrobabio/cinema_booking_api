@@ -1,7 +1,7 @@
 {
   "name": "Cinema Booking API",
   "description": "Cinema Booking API",
-  "repository": "https://github.com/alejandrobabio/cinema_booking",
+  "repository": "https://github.com/alejandrobabio/cinema_booking_api",
   "keywords": [],
   "env": {
     "RACK_ENV": "production",
