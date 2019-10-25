@@ -5,15 +5,15 @@ require 'yaml'
 require 'cinema_booking'
 
 module CinemaBooking
-  DB_CONFIG =
+  DB_URL =
     if ENV['RACK_ENV'] == 'production'
       ENV.delete('DATABASE_URL')
     else
       YAML.safe_load(
         File.read("#{RootPath}/config/database.yml")
-      )[ENV['RACK_ENV']]
+      )[ENV['RACK_ENV']]['url']
     end.freeze
-  private_constant :DB_CONFIG
+  private_constant :DB_URL
 
-  DB = Sequel.connect(DB_CONFIG['url'])
+  DB = Sequel.connect(DB_URL, logger: Logger)
 end
