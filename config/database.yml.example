@@ -1,0 +1,5 @@
+development:
+  url: postgres://cinema_booking:@localhost/cinema_booking_development
+
+test:
+  url: postgres://cinema_booking:@localhost/cinema_booking_test
