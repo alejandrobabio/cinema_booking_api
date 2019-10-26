@@ -33,6 +33,17 @@ module CinemaBooking
       dataset.count
     end
 
+    def preload(results, key, table)
+      ids = results.map { |result| result[key] }.uniq
+      records = DB[table].where(id: ids).all
+      results.map do |result|
+        singular = key.to_s.gsub(/_id$/, '').to_sym
+        result[singular] = records.detect { |rec| rec[:id] == result[key] }
+
+        result
+      end
+    end
+
     private
 
     attr_reader :dataset

@@ -14,7 +14,7 @@ module CinemaBooking
       end
 
       register :bookings do
-        Repositories::Movies.new(DB[:bookings])
+        Repositories::Bookings.new(DB[:bookings])
       end
     end
   end

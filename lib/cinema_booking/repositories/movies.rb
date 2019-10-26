@@ -9,6 +9,10 @@ module CinemaBooking
         super(parse_attrs(attrs))
       end
 
+      def for_day(day)
+        dataset.where(day => Sequel.function(:any, :days)).all
+      end
+
       private
 
       def parse_attrs(attrs)
