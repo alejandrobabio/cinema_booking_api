@@ -12,7 +12,11 @@ module CinemaBooking
     describe '#create' do
       it 'creates a movie record' do
         expect {
-          repo.create(name: 'Die Hard')
+          repo.create(
+            name: 'Die Hard',
+            description: 'Nakatomi Plaza kidnapping',
+            image_url: 'https://upload.wikimedia.org/wikipedia/en/7/7e/Die_hard.jpg'
+          )
         }.to change(repo, :count).from(0).to(1)
       end
 
