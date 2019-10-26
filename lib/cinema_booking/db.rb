@@ -16,4 +16,5 @@ module CinemaBooking
   private_constant :DB_URL
 
   DB = Sequel.connect(DB_URL, logger: Logger)
+  DB.extension :pg_array
 end

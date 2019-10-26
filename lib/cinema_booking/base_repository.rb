@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'db'
+require 'cinema_booking/db'
 
 module CinemaBooking
   class BaseRepository
@@ -27,6 +27,10 @@ module CinemaBooking
 
     def find(id)
       dataset.where(id: id).single_record
+    end
+
+    def count
+      dataset.count
     end
 
     private

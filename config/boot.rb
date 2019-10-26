@@ -5,4 +5,6 @@ require 'bundler/setup'
 
 Bundler.require :default, ENV['RACK_ENV']
 
-require 'cinema_booking'
+require 'cinema_booking/container'
+
+CinemaBooking::Container.finalize!
