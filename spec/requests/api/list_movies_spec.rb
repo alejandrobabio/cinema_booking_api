@@ -13,7 +13,7 @@ module CinemaBooking
 
     describe 'GET /movies' do
       before do
-        0.upto(6) do |ix|
+        7.times do |ix|
           repo.create(name: "Die Hard #{ix}", days: Date::ABBR_DAYNAMES[ix..-1])
         end
       end

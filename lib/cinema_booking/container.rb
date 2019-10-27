@@ -65,5 +65,21 @@ module CinemaBooking
         end
       end
     end
+
+    namespace :list_bookings do
+      register :validate do
+        lambda do |args|
+          require 'services/list_bookings/validate'
+          Services::ListBookings::Validate.new.(args)
+        end
+      end
+
+      register :list do
+        lambda do |args|
+          require 'services/list_bookings/list'
+          Services::ListBookings::List.new.(args)
+        end
+      end
+    end
   end
 end
