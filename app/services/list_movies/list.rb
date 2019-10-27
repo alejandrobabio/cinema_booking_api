@@ -4,14 +4,15 @@ require 'dry/transaction/operation'
 
 module CinemaBooking
   module Services
-    class CreateMovie
-      class Persist
+    class ListMovies
+      class List
         include Dry::Transaction::Operation
         include Import['repositories.movies']
 
         def call(params)
-          movies.create(params)
-          Success()
+          Success(
+            movies.for_day(params[:day])
+          )
         end
       end
     end
