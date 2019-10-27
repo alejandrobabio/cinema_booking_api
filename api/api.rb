@@ -5,8 +5,6 @@ require 'bookings'
 
 module CinemaBooking
   class API < Grape::API
-    format :json
-
     helpers do
       def logger
         CinemaBooking::Logger
