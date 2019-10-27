@@ -9,6 +9,10 @@ module CinemaBooking
         result = dataset.where(booking_date: from..to).all
         preload(result, :movie_id, :movies)
       end
+
+      def count_for_show(movie_id, booking_date)
+        dataset.where(movie_id: movie_id, booking_date: booking_date).count
+      end
     end
   end
 end

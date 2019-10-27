@@ -8,6 +8,7 @@ gem 'dry-auto_inject'
 gem 'dry-container'
 gem 'dry-schema'
 gem 'dry-transaction'
+gem 'dry-validation'
 gem 'grape'
 gem 'grape-entity'
 gem 'pg'
@@ -30,4 +31,5 @@ end
 group :test do
   gem 'database_cleaner', require: false
   gem 'rack-test', require: false
+  gem 'timecop'
 end

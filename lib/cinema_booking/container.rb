@@ -49,5 +49,21 @@ module CinemaBooking
         end
       end
     end
+
+    namespace :create_booking do
+      register :validate do
+        lambda do |args|
+          require 'services/create_booking/validate'
+          Services::CreateBooking::Validate.new.(args)
+        end
+      end
+
+      register :persist do
+        lambda do |args|
+          require 'services/create_booking/persist'
+          Services::CreateBooking::Persist.new.(args)
+        end
+      end
+    end
   end
 end

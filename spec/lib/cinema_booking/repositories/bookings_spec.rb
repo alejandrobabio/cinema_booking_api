@@ -48,5 +48,17 @@ module CinemaBooking
         expect(result.first[:movie][:name]).to match(/Die Hard/)
       end
     end
+
+    describe '#count_for_show' do
+      let(:movie_id) { movies_repo.create(name: 'Die Hard') }
+
+      it 'returns count of bookings by show' do
+        3.times do |i|
+          repo.create(movie_id: movie_id, booking_date: '2019-11-05', customer_name: "John #{i}")
+        end
+
+        expect(repo.count_for_show(movie_id, '2019-11-05')).to eq 3
+      end
+    end
   end
 end
