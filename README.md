@@ -1,5 +1,7 @@
 # Cinema Booking API
 
+Try this API working in `https://cinema-booking-api.herokuapp.com`.
+
 ## Deployment
 
 ### Production deployment to Heroku
