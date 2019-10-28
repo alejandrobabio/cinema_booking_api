@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'services/list_bookings'
+require 'entities/booking'
 
 module CinemaBooking
   class Bookings < Grape::API
@@ -10,7 +11,7 @@ module CinemaBooking
       get do
         Services::ListBookings.new.(params) do |m|
           m.success do |result|
-            result
+            present result, with: Entities::Booking
           end
 
           m.failure do |error|
