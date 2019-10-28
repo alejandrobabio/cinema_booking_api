@@ -14,7 +14,7 @@ module CinemaBooking
           optional(:description).maybe(:string)
           optional(:image_url)
             .maybe(format?: %r{^http(s?):\/\/.*\.(jpeg|jpg|gif|png)$})
-          optional(:days).maybe do
+          required(:days).filled do
             array do
               value(:str?, included_in?: Date::ABBR_DAYNAMES)
             end

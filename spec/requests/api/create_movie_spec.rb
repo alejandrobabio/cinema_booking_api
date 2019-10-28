@@ -13,7 +13,7 @@ module CinemaBooking
 
     describe 'POST /movies' do
       it 'returns created' do
-        input = { name: 'Die Hard' }
+        input = { name: 'Die Hard', days: %w[Mon Fri] }
         post '/movies', input, header
 
         expect(last_response.status).to eq 201
@@ -36,7 +36,7 @@ module CinemaBooking
       end
 
       it 'can\'t create with an empty name' do
-        input = { name: nil }
+        input = { name: nil, days: ['Mon'] }
         post '/movies', input, header
 
         expect(last_response.status).to eq 422
@@ -49,7 +49,23 @@ module CinemaBooking
         expect(last_response.body).to eq error.to_json
       end
 
-      it 'can\'t create without name' do
+      it 'can\'t create with empty days' do
+        input = { name: 'Die Hard', days: [] }
+        post '/movies', input, header
+
+        expect(last_response.status).to eq 422
+
+        error = {
+          errors: {
+            days: {
+              0 => ['must be one of: Sun, Mon, Tue, Wed, Thu, Fri, Sat']
+            }
+          }
+        }
+        expect(last_response.body).to eq error.to_json
+      end
+
+      it 'can\'t create without name or days' do
         input = {}
         post '/movies', input, header
 
@@ -57,7 +73,7 @@ module CinemaBooking
 
         error = {
           errors: {
-            name: ['is missing']
+            name: ['is missing'], days: ['is missing']
           }
         }
         expect(last_response.body).to eq error.to_json
