@@ -78,6 +78,22 @@ module CinemaBooking
         }
         expect(last_response.body).to eq error.to_json
       end
+
+      it 'can\' create duplicated' do
+        input = { name: 'Die Hard', days: %w[Mon Fri] }
+        repo.create(input)
+
+        post '/movies', input, header
+
+        expect(last_response.status).to eq 422
+
+        error = {
+          errors: {
+            name: ['Die Hard: already exists']
+          }
+        }
+        expect(last_response.body).to eq error.to_json
+      end
     end
   end
 end

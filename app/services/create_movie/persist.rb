@@ -12,6 +12,8 @@ module CinemaBooking
         def call(params)
           movies.create(params)
           Success()
+        rescue Sequel::UniqueConstraintViolation
+          Failure(name: ["#{params[:name]}: already exists"])
         end
       end
     end

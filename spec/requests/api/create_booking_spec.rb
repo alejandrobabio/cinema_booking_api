@@ -115,6 +115,27 @@ module CinemaBooking
           expect(last_response.body).to eq error.to_json
         end
       end
+
+      it 'do not allow duplicates' do
+        Timecop.freeze(Date.new(2019, 10, 28)) do
+          input = { movie_id: movie_id, customer_name: 'John Doe', booking_date: '2019-11-05' }
+          repo.create(input)
+
+          post '/bookings', input, header
+
+          expect(last_response.status).to eq 422
+
+          error = {
+            errors: {
+              base: [
+                "Booking Date: 2019-11-05, Movie id: #{movie_id}, "\
+                'Customer Name: John Doe: combination already exists'
+              ]
+            }
+          }
+          expect(last_response.body).to eq error.to_json
+        end
+      end
     end
   end
 end
