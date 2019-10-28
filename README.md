@@ -8,9 +8,9 @@ Try this API working in `https://cinema-booking-api.herokuapp.com`.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-### Development and Test Database Setup
+### Development and Test Setup
 
-Copy `config/database.yml.example` to `config/database.yml`.
+Clone de repository, run `bundle install` and copy `config/database.yml.example` to `config/database.yml`.
 
 Create test and development databases, `user` should be consistent with your `config/database.yml`
 
@@ -32,6 +32,20 @@ Run tests
 ```sh
 $ bundle exec rspec
 ```
+
+Start the development server with `rerun` to get a server restart on any change of the source code:
+
+```sh
+$ rerun -- puma --port 3000 config.ru
+```
+
+Or, run bare server with:
+
+```sh
+$ puma --port 3000 config.ru
+```
+
+Then in development use the url: `http://localhost:3000` for all the endpoints.
 
 ## Endpoints
 
